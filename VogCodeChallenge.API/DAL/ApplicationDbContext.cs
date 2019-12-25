@@ -19,7 +19,21 @@ namespace VogCodeChallenge.API.DAL
         public DbSet<Employee> employees { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-             
+            modelBuilder.Entity<Employee>()
+            .HasOne(x => x.department)
+            .WithMany()
+            .HasForeignKey(x => x.departmentToken);
+            modelBuilder.Entity<Employee>()
+            .HasOne(x => x.company)
+            .WithMany()
+            .HasForeignKey(x => x.companyToken);
+
+            modelBuilder.Entity<Department>()
+            .HasOne(x => x.company)
+            .WithMany()
+            .HasForeignKey(x => x.companyToken);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

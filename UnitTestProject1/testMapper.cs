@@ -8,7 +8,7 @@ using System.Text;
 using VogCodeChallenge.API.DAL;
 using VogCodeChallenge.API.DAL.Entities;
 using VogCodeChallenge.API.modules;
-using VogCodeChallenge.API.System.mappers;
+using VogCodeChallenge.API.Service.mappers;
 using Xunit;
 
 namespace UnitTestProject1
@@ -22,7 +22,11 @@ namespace UnitTestProject1
         [Fact]
         public void testEmployeeMapper()
         {
-            Employee empEntity = new Employee { token = System.Guid.NewGuid(), FirstName = "FName1", LastName = "LName1", JobTitle = "Comp1-Dep1-Title1", MailingAddress = "Comp1-Dep1-Address1" };
+
+            Company compEntity = new Company{token = System.Guid.NewGuid(),CompanyName = "Company1"};
+            Department deptEntity = new Department{token = System.Guid.NewGuid(),DepartmentName = "Department1",Address = "Dep1-Address1"};
+
+            Employee empEntity = new Employee { token = System.Guid.NewGuid(), FirstName = "FName1", LastName = "LName1", JobTitle = "Comp1-Dep1-Title1", MailingAddress = "Comp1-Dep1-Address1",department= deptEntity, departmentToken= deptEntity.token,company=compEntity,companyToken=compEntity.token };
             EmployeeModel empModel = EmployeeMapper.toModel(empEntity); // convert from Model to Entity
             Employee empEntity2 = EmployeeMapper.toEntity(new Employee(), empModel); // convert it back from Entity to Model
 

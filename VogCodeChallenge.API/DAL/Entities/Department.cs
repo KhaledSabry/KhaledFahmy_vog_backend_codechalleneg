@@ -15,5 +15,9 @@ namespace VogCodeChallenge.API.DAL.Entities
         public string DepartmentName { get; set; } 
         public string Address { get; set; }
         public List<Employee> Employees { get; set; }
+
+        [Required]
+        public Guid companyToken { get; set; }
+        public virtual Company company { get; set; }
     }
 }

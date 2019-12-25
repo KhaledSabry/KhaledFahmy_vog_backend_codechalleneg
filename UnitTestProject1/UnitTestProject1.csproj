@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="FakeDbSet.cs" />
+    <Compile Remove="testMapper.cs" />
     <Compile Remove="UnitTest1.cs" />
   </ItemGroup>
 

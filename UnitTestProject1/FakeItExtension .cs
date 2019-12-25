@@ -34,6 +34,7 @@ public static class FakeItExtension
         {
             var expectedValue = propertyInfo.GetValue(expected);
             var actualValue = propertyInfo.GetValue(actual);
+            var subProperties = actualValue.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
 
             if (expectedValue == null || actualValue == null)
             {
@@ -41,6 +42,13 @@ public static class FakeItExtension
                 {
                     return false;
                 }
+            }
+            else if(subProperties.Length > 1)
+            { 
+                    if (!Equals(expectedValue.ByProperties(), actualValue))
+                    {
+                        return false;
+                    } 
             }
             else if (typeof(System.Collections.IList).IsAssignableFrom(propertyInfo.PropertyType))
             {

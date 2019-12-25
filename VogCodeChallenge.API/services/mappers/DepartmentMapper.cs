@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using VogCodeChallenge.API.DAL.Entities;
 using VogCodeChallenge.API.modules;
 
-namespace VogCodeChallenge.API.System.mappers
+namespace VogCodeChallenge.API.Service.mappers
 {
     public class DepartmentMapper
     {
@@ -13,11 +13,11 @@ namespace VogCodeChallenge.API.System.mappers
         {
             DepartmentModel model = new DepartmentModel();
             if (entity != null)
-            { 
+            {
                 model.token = entity.token;
                 model.DepartmentName = entity.DepartmentName;
                 model.Address = entity.Address;
-                model.Employees = entity.Employees.Select(a=>EmployeeMapper.toModel( a)).ToList(); 
+                model.Employees = entity.Employees.Select(a => EmployeeMapper.toModel(a)).ToList();
             }
             return model;
         }
@@ -28,7 +28,7 @@ namespace VogCodeChallenge.API.System.mappers
                 entity.token = model.token;
                 entity.DepartmentName = model.DepartmentName;
                 entity.Address = model.Address;
-                entity.Employees =  EmployeeMapper.toEntity( entity.Employees, model.Employees) ;
+                entity.Employees = EmployeeMapper.toEntity(entity.Employees, model.Employees);
             }
             else
                 entity = new Department();

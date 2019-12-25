@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using VogCodeChallenge.API.DAL.Entities;
 using VogCodeChallenge.API.modules;
 
-namespace VogCodeChallenge.API.System.mappers
+namespace VogCodeChallenge.API.Service.mappers
 {
     public class CompanyMapper
     {
@@ -16,11 +16,11 @@ namespace VogCodeChallenge.API.System.mappers
             {
                 model.token = entity.token;
                 model.CompanyName = entity.CompanyName;
-                model.Departments = entity.Departments.Select(a=> DepartmentMapper.toModel(a)).ToList(); 
+                model.Departments = entity.Departments.Select(a => DepartmentMapper.toModel(a)).ToList();
             }
             return model;
         }
-        public static Company toEntity(Company entity, CompanyModel model )
+        public static Company toEntity(Company entity, CompanyModel model)
         {
             if (model != null)
             {

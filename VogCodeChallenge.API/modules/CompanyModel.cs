@@ -8,8 +8,7 @@ namespace VogCodeChallenge.API.modules
 {
     public class CompanyModel : baseModel
     {
-        [Key]
-        public Guid token { get; set; }
+        
         public string CompanyName { get; set; }
         public List<DepartmentModel> Departments { get; set; }
     }
