@@ -30,6 +30,7 @@ namespace VogCodeChallenge.API
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString)); //adding Dependency Injection from the DB context
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
