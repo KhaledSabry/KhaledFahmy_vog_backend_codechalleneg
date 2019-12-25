@@ -37,5 +37,11 @@ namespace VogCodeChallenge.API.Service
             //return employeeModels;
         }
 
+        public IEnumerable<Employee> GetByDepartment(Guid departmentId)
+        {
+            EmployeeRepository empRepository = new EmployeeRepository(this._context);
+            var emloyees = empRepository.GetByDepartment( departmentId);
+            return emloyees;
+        }
     }
 }

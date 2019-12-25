@@ -24,5 +24,11 @@ namespace VogCodeChallenge.API.DAL.Repositories
             IList<Employee> employees = this._context.employees.ToList();
             return employees;
         }
+
+        public IEnumerable<Employee> GetByDepartment(Guid departmentId)
+        {
+            IEnumerable<Employee> employees = this._context.employees.Where(a=>a.departmentToken== departmentId);
+            return employees;
+        }
     }
 }

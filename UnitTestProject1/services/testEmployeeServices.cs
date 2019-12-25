@@ -17,7 +17,7 @@ namespace UnitTestProject1.services
         public testEmployeeServices()
         {
             Company company = new Company() { token = System.Guid.NewGuid(), CompanyName = "Company1" };
-            Department department = new Department(){token = System.Guid.NewGuid(),DepartmentName = "Comp1-Department1",Address = "Comp1-Dep1-Address1"};
+            Department department = new Department(){token = System.Guid.NewGuid(),DepartmentName = "Comp1-Department1",Address = "Comp1-Dep1-Address1", company = company, companyToken = company.token };
             List<Employee> employees =new List<Employee>() {
                                     new Employee() { token=System.Guid.NewGuid(),FirstName= "FName1",LastName="Name1",JobTitle="Title1",MailingAddress= "Address1",company=company,companyToken=company.token,department=department,departmentToken=department.token },
                                     new Employee() { token=System.Guid.NewGuid(),FirstName= "FName2",LastName="Name2",JobTitle="Title2",MailingAddress= "Address2" ,company=company,companyToken=company.token,department=department,departmentToken=department.token },
