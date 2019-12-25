@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VogCodeChallenge.API.DAL;
 using VogCodeChallenge.API.DAL.Entities;
+using VogCodeChallenge.API.modules;
 using VogCodeChallenge.API.Service;
+using VogCodeChallenge.API.Service.mappers;
 
 namespace VogCodeChallenge.API.Controllers
 {
@@ -40,20 +42,20 @@ namespace VogCodeChallenge.API.Controllers
         }
         // GET api/employees
         [HttpGet]
-        public ActionResult<IEnumerable<Employee>> Get()
-        {// in real world it should return EmployeeModel insted of the entities 
+        public ActionResult<IEnumerable<EmployeeModel>> Get()
+        {
             EmployeeService empService = new EmployeeService(this._context);
             IEnumerable<Employee> result = empService.GetAll();
-            return Ok(result);
+            return Ok(result.Select(a => EmployeeMapper.toModel(a)) );
         }
 
         // GET api/employees/department/75520E56-3033-444D-9214-B614CD1987DB
         [HttpGet("department/{departmentId}")]
-        public ActionResult<IEnumerable<Employee>> Get(Guid departmentId)
+        public ActionResult<IEnumerable<EmployeeModel>> Get(Guid departmentId)
         {
             EmployeeService empService = new EmployeeService(this._context);
             IEnumerable<Employee> result = empService.GetByDepartment(departmentId);
-            return Ok(result);
+            return Ok(result.Select(a => EmployeeMapper.toModel(a)));
         }
     }
 }

@@ -16,6 +16,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="modules\baseModel.cs" />
+    <Compile Include="modules\CompanyModel.cs" />
+    <Compile Include="modules\DepartmentModel.cs" />
+    <Compile Include="modules\EmployeeModel.cs" />
+    <Compile Include="services\mappers\CompanyMapper.cs" />
+    <Compile Include="services\mappers\DepartmentMapper.cs" />
+    <Compile Include="services\mappers\EmployeeMapper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
